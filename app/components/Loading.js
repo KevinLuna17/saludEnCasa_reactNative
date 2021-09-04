@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#00a680", //color verde corporativo
-    textTransform: "uppercase",
+    //textTransform: "uppercase",
     marginTop: 10,
+    textAlign: "center",
   },
 });

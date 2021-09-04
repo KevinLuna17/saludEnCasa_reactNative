@@ -10,7 +10,10 @@ export default function TopRestaurantsStack() {
       <Stack.Screen
         name="top-restaurants"
         component={TopRestaurants}
-        options={{ title: "Personal de Salud" }}
+        options={{
+          title: "Ranking Servicios Médicos",
+          headerTintColor: "#00a680",
+        }}
       />
     </Stack.Navigator>
   );

@@ -9,13 +9,15 @@ export default function Register() {
 
   return (
     <KeyboardAwareScrollView>
-      <Image
-        source={require("../../../assets/img/logosaludencasa3.png")}
-        resizeMode="contain"
-        style={styles.logo}
-      />
-      <View style={styles.viewForm}>
-        <RegisterForm toastRef={toastRef} />
+      <View style={styles.viewScreen}>
+        <Image
+          source={require("../../../assets/img/sCCC_2.png")}
+          resizeMode="contain"
+          style={styles.logo}
+        />
+        <View style={styles.viewForm}>
+          <RegisterForm toastRef={toastRef} />
+        </View>
       </View>
       <Toast ref={toastRef} position="center" opacity={0.9} />
     </KeyboardAwareScrollView>
@@ -23,12 +25,17 @@ export default function Register() {
 }
 
 const styles = StyleSheet.create({
+  viewScreen: {
+    backgroundColor: "#fff",
+  },
   logo: {
     width: "100%",
     height: 150,
-    marginTop: 20,
+    marginTop: 25,
+    marginBottom: 20,
   },
   viewForm: {
+    //backgroundColor: "#fff",
     marginRight: 40,
     marginLeft: 40,
   },

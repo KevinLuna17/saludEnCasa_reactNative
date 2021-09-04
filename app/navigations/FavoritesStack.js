@@ -10,7 +10,10 @@ export default function FavoritesStack() {
       <Stack.Screen
         name="favorites"
         component={Favorites}
-        options={{ title: "Servicios médicos favoritos" }}
+        options={{
+          title: "Servicios Médicos Favoritos",
+          headerTintColor: "#00a680",
+        }}
       />
     </Stack.Navigator>
   );

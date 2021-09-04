@@ -15,7 +15,7 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="restaurants"
+        initialRouteName="account"
         tabBarOptions={{
           inactiveTintColor: "#646464",
           activeTintColor: "#00a680",
@@ -27,7 +27,7 @@ export default function Navigation() {
         <Tab.Screen
           name="restaurants"
           component={RestaurantsStack}
-          options={{ title: "Servicios Médicos" }}
+          options={{ title: "Consultas" }}
         />
         <Tab.Screen
           name="favorites"
@@ -37,12 +37,12 @@ export default function Navigation() {
         <Tab.Screen
           name="top-restaurants"
           component={TopRestaurantsStack}
-          options={{ title: "Top Médicos" }}
+          options={{ title: "Top Servicios" }}
         />
         <Tab.Screen
           name="search"
           component={SearchStack}
-          options={{ title: "Buscar" }}
+          options={{ title: "Visualizar Citas" }}
         />
         <Tab.Screen
           name="account"
@@ -68,7 +68,7 @@ function screenOptions(route, color) {
       iconName = "star-outline";
       break;
     case "search":
-      iconName = "magnify";
+      iconName = "calendar-clock";
       break;
     case "account":
       iconName = "home-outline";

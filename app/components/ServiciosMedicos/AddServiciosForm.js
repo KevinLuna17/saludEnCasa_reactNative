@@ -335,8 +335,11 @@ a que devuelva la localización para continuar. Función anónimo autoejecutable
           3000
         );
       } else {
-        const loc = await Location.getCurrentPositionAsync({});
-
+        //const loc = await Location.getCurrentPositionAsync({}); Actualmente da error
+        //Forma correcta actualmente de manejar la dirección GPS
+        const loc = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.High,
+        });
         /*Este objeto se lo utilizará para el Mapa tiene que estar bien definido */
         setLocation({
           latitude: loc.coords.latitude,

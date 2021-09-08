@@ -35,8 +35,7 @@ export default function Favorites(props) {
       user ? setUserLogged(true) : setUserLogged(false);
     });
   }, []);
-  /*             ********************************                /*
-  
+  /*             ********************************                */
 
   /* Al hacer uso del useFocusEffect se trabaja en el Virtual DOM
 una vez comprobado los cambios con el DOM real ahí se muestra la

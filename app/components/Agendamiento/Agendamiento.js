@@ -1,3 +1,4 @@
+/* Esta vista es de la pantalla de Servicios Médicos para visualizar el botón de Agendar Cita en el caso que esté logeado o no */
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
@@ -9,17 +10,9 @@ import "firebase/firestore";
 const db = firebase.firestore(firebaseApp);
 
 export default function Agendamiento(props) {
-  const { navigation } = props;
+  const { navigation, idServicio, nombreServicio } = props;
   const [userLogged, setUserLogged] = useState(false); //Estado que indica si el usuario está logeado o no
 
-  /* useEffect que verifica si el usuario está logeado se muestra 
-  el boton para que agende o para que logee */
-  /* useEffect(() => {
-    firebase.auth().onAuthStateChanged((userInfo) => {
-      setUserLogged(userInfo);
-    });
-  }, []); */
-  /*             *****************************             */
   useEffect(() => {
     //ELIMINAR USE EFFECT SI DA PROBLEMAS
     firebase.auth().onAuthStateChanged((user) => {
@@ -40,11 +33,11 @@ export default function Agendamiento(props) {
             color: "#00a680",
           }}
           //En esta parte navegamos a esta Screen pero obteniendo el ID del servicio a través de props con AddReviewServicio
-          onPress={
-            () => navigation.navigate("add-agendamiento")
-            /* navigation.navigate("add-agendamiento", {
-              screen: "add-agendamiento",
-            }) */
+          onPress={() =>
+            navigation.navigate("add-agendamiento", {
+              idServicio: idServicio,
+              nombreServicio: nombreServicio,
+            })
           }
         />
       ) : (

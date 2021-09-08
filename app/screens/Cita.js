@@ -1,12 +1,41 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  Alert,
+} from "react-native";
 
 export default function Cita({ item, eliminarPaciente }) {
+  //const navigation = useNavigation();
   //Función que muestra un dialogo si desea Eliminar el agendamiento
   const dialogoEliminar = (id) => {
+    Alert.alert(
+      "¿Deseas eliminar el la cita médica programada?",
+      "Una vez eliminada no se puede recuperar",
+      [
+        {
+          text: "Confirmar",
+          onPress: () => {
+            //Eliminar del state
+            eliminarPaciente(id);
+          },
+        },
+        { text: "Cancelar", style: "cancel" },
+      ]
+    );
     //console.log("Eliminando Agendamiento", id);
-    eliminarPaciente(id);
   };
+  /*        *******************       */
+
+  //Función que muestra un dialogo si desea Reprogramar el agendamiento
+  /* const dialogoReprogramar = (id) => {
+    console.log("Reprogramando Agendamiento", id);
+    //navigation.navigate("restaurants", { screen: "add-agendamiento" });
+    //navigation.navigate("add-agendamiento"); //Esto no va aqui
+    reprogramarAgendamiento(id);
+  }; */
   /*        *******************       */
 
   return (
@@ -42,13 +71,27 @@ export default function Cita({ item, eliminarPaciente }) {
       </View>
 
       <View>
+        <Text style={styles.label}>Dirección de Domicilio del Paciente</Text>
+        <Text style={styles.texto}>{item.direccionPaciente}</Text>
+      </View>
+
+      <View>
         <TouchableHighlight
           style={styles.btnEliminar}
           onPress={() => dialogoEliminar(item.id)}
         >
-          <Text style={styles.textEliminar}>Eliminar &times;</Text>
+          <Text style={styles.textEliminar}>Eliminar cita médica &times;</Text>
         </TouchableHighlight>
       </View>
+
+      {/* <View>
+        <TouchableHighlight
+          style={styles.btnReprogramar}
+          onPress={() => dialogoReprogramar(item.id)}
+        >
+          <Text style={styles.textEliminar}>Reprogramar cita médica</Text>
+        </TouchableHighlight>
+      </View> */}
     </View>
   );
 }
@@ -73,6 +116,11 @@ const styles = StyleSheet.create({
   btnEliminar: {
     padding: 10,
     backgroundColor: "red",
+    marginVertical: 10,
+  },
+  btnReprogramar: {
+    padding: 10,
+    backgroundColor: "#2196F3",
     marginVertical: 10,
   },
   textEliminar: {

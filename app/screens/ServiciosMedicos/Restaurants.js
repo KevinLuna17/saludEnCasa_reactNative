@@ -15,6 +15,7 @@ const db = firebase.firestore(firebaseApp);
 export default function Restaurants(props) {
   const { navigation } = props;
   const [user, setUser] = useState(null);
+  //const [tipoUser, setTipoUser] = useState(null);
   const [servicios, setServicios] = useState([]); //Estado que trabaja con los Servicios Médicos registrados en Base
   const [totalServicios, setTotalServicios] = useState(0); //Con este estado vemos cuantos servicios médicos nos han llegado
   const [startServicios, setStartServicios] = useState(null); //Estado que ayuda a saber por donde debe empezar la iteracción del Scroll Infinito
@@ -27,6 +28,16 @@ export default function Restaurants(props) {
       setUser(userInfo);
     });
   }, []);
+  /*             *****************************             */
+
+  /* useEffect que verifica el tipo de usuario logeado para mostrar el ícono de agregar Servicio Médico */
+  /* useEffect(() => {
+    db.collection("usuarios")
+      .where("tipouser", "==", "ADMIN")
+      .get((userInfo) => {
+        setTipoUser(userInfo);
+      });
+  }, []); */
   /*             *****************************             */
 
   /* Hacemos la petición para mostrar el listado de Servicios Médicos 

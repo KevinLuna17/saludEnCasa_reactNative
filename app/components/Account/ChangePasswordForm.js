@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Input, Button } from "react-native-elements";
-import { size } from "lodash";
+//import { size } from "lodash";
 import firebase from "firebase";
 import { reauthenticate } from "../../utils/api";
 import { validateContrasena } from "../../utils/validations";

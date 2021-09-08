@@ -12,7 +12,7 @@ import ListReviews from "../../components/ServiciosMedicos/ListReviews";
 import { firebaseApp } from "../../utils/firebase";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import Agendamiento from "../Agendamiento/Agendamiento";
+import Agendamiento from "../../components/Agendamiento/Agendamiento";
 
 const db = firebase.firestore(firebaseApp);
 const screenWidth = Dimensions.get("window").width;
@@ -25,7 +25,8 @@ export default function Servicio(props) {
   const [isFavorite, setIsFavorite] = useState(false); //Estado que indica si el servicio está en la lista de favoritos
   const [userLogged, setUserLogged] = useState(false); //Estado que indica si el usuario está logeado o no
   const toastRef = useRef(); //Referencia creada para el Toast que se importó
-
+  //console.log(route);
+  //console.log(id);
   /*useEffect de la Funcion que coloca titulo a la Screen*/
   useEffect(() => {
     navigation.setOptions({ title: nombre });
@@ -159,8 +160,14 @@ export default function Servicio(props) {
         location={servicio.location}
         nombre={servicio.nombre}
         address={servicio.address}
+        phone={servicio.phone}
+        email={servicio.email}
       />
-      <Agendamiento navigation={navigation} />
+      <Agendamiento
+        navigation={navigation}
+        idServicio={servicio.id}
+        nombreServicio={servicio.nombre}
+      />
       <ListReviews navigation={navigation} idServicio={servicio.id} />
       <Toast ref={toastRef} position="center" opacity={0.9} />
     </ScrollView>
@@ -189,7 +196,7 @@ function TitleServicio(props) {
 
 /* */
 function ServicioInfo(props) {
-  const { location, nombre, address } = props;
+  const { location, nombre, address, phone, email } = props;
 
   /* la funcion map de Lodash nos ayudara a iterar este ARRAY */
   const listInfo = [
@@ -201,14 +208,14 @@ function ServicioInfo(props) {
       action: null,
     },
     {
-      text: "0982903220",
+      text: phone,
       iconName: "phone",
       iconType: "material-community",
       iconColor: "#00a680",
       action: null,
     },
     {
-      text: "s.c_saludencasa@gmail.com",
+      text: email,
       iconName: "at",
       iconType: "material-community",
       iconColor: "#00a680",

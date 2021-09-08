@@ -37,6 +37,14 @@ export default function RestaurantsStack() {
           headerTintColor: "#00a680",
         }}
       />
+      {/* <Stack.Screen
+        name="agendamiento-state"
+        component={AgendamientoState}
+        options={{
+          title: "Confirmar Cita Médica",
+          headerTintColor: "#00a680",
+        }}
+      /> */}
     </Stack.Navigator>
   );
 }

@@ -6,10 +6,10 @@ export function validateEmail(email) {
 
 export function validateContrasena(password) {
   const re = /^[a-zA-Z0-9\_\-]{8,12}$/;
-  return re.test(password); //Devuelve false cuando el formato de email es invalido
+  return re.test(password); //Devuelve false cuando el formato de password es invalido
 }
 
 export function validatePhone(phone) {
   const re = /^[0-9\_\-]{10}$/;
-  return re.test(phone); //Devuelve false cuando el formato de email es invalido
+  return re.test(phone); //Devuelve false cuando el formato de phone es invalido
 }

@@ -46,7 +46,15 @@ function ServicioMedico(props) {
   const { servicio, navigation } = props;
 
   //Destructuring para poder obtener la imagen del Objeto que nos llega de Base
-  const { id, images, nombre, address, description } = servicio.item;
+  const {
+    id,
+    images,
+    nombre,
+    nombreMedico,
+    address,
+    description,
+    precioServicio,
+  } = servicio.item;
   const imageServicio = images[0];
   /*    *******************    */
 
@@ -74,10 +82,12 @@ function ServicioMedico(props) {
         </View>
         <View>
           <Text style={styles.servicioNombre}>{nombre}</Text>
-          <Text style={styles.servicioAddress}>{address}</Text>
+          <Text>{nombreMedico}</Text>
+          <Text style={styles.servicioAddress}>Dirección: {address}</Text>
           <Text style={styles.servicioDescription}>
             {description.substr(0, 60)}...
           </Text>
+          <Text style={styles.servicioPrecio}>Precio: ${precioServicio}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -116,23 +126,31 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   viewServicioImagen: {
+    marginTop: 7,
     marginRight: 15,
+    marginLeft: 5,
   },
   imageServicio: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
   },
   servicioNombre: {
     fontWeight: "bold",
+    fontSize: 15,
   },
   servicioAddress: {
     paddingTop: 2, //Para separarlo del Nombre del Servicio
     color: "grey",
+    width: 300,
   },
   servicioDescription: {
     paddingTop: 2, //Para separarlo del Address del Servicio
     color: "grey",
     width: 300,
+  },
+  servicioPrecio: {
+    paddingTop: 2, //Para separarlo del Nombre del Servicio
+    color: "grey",
   },
   notFoundServicios: {
     marginTop: 10,

@@ -119,7 +119,7 @@ export default function Restaurants(props) {
         isLoading={isLoading}
       />
 
-      {user && (
+      {/*  {user && (
         <Icon
           reverse
           type="material-community"
@@ -128,7 +128,7 @@ export default function Restaurants(props) {
           containerStyle={styles.btnContainer}
           onPress={() => navigation.navigate("add-servicios")}
         />
-      )}
+      )} */}
     </View>
   );
 }

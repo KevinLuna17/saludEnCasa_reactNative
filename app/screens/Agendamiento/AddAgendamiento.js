@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Toast from "react-native-easy-toast";
-import AgendamientoForm from "./AgendamientoForm";
+import AgendamientoForm from "../../components/Agendamiento/AgendamientoForm";
 import Loading from "../../components/Loading";
 
 //Importaciones para trabajar con Firestore

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "831098518614",
+    "project_id": "saludencasa-fb2c7",
+    "storage_bucket": "saludencasa-fb2c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831098518614:android:a6331bfc644824531e0ff7",
+        "android_client_info": {
+          "package_name": "com.tesis.saludencasa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831098518614-hrdmg1tqhtrhpadkohf6ao561oadc0cm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tesis.saludencasa",
+            "certificate_hash": "ef9d0a9b85cec214d975f9de82a3e4bf9a121bee"
+          }
+        },
+        {
+          "client_id": "831098518614-kpuvui1gme75r8uvvq9hcf58gnm5p51c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVStgkXSwuBXa6cjBYe_fJWWWgr2u8wrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831098518614-kpuvui1gme75r8uvvq9hcf58gnm5p51c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "831098518614-72js7bp7dk136vdi9d2mnv16dt2utjp8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tesis.saludencasa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

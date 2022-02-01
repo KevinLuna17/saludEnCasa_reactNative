@@ -17,10 +17,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tesis.saludencasa",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.831098518614-72js7bp7dk136vdi9d2mnv16dt2utjp8"
+        }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist" 
     },
     "android": {
-      "package": "com.tesis.SaludEnCasa",
+      "package": "com.tesis.saludencasa",
+      "googleServicesFile": "./google-services.json",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyAVStgkXSwuBXa6cjBYe_fJWWWgr2u8wrU"

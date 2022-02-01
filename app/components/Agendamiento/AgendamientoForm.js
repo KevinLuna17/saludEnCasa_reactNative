@@ -21,7 +21,7 @@ import * as Location from "expo-location";
 import MapView from "react-native-maps";
 /*          **********        */
 import { size } from "lodash"; //Como estamos trabajando con un ARRAY usamos lodash
-import Modal from "../../components/Modal";
+import Modal from "../Modal";
 import { validatePhone } from "../../utils/validations";
 
 //Importaciones para trabajar con Firestore
@@ -51,7 +51,8 @@ export default function AgendamientoForm({
   const [tipoServicio, guardarTipoServicio] = useState("");
   const [telefono, guardarTelefono] = useState("");
   const [direccionPaciente, guardarDireccionPaciente] = useState("");
-  const [selectAgendamiento, setSelectAgendamientos] = useState(null);
+  const [selectAgendamiento, setSelectAgendamientos] = useState([]);
+  const [select, guardaSelect] = useState("");
 
   //Imprimimos el correo electrónico con el que se registró el paciente
 
@@ -99,7 +100,7 @@ export default function AgendamientoForm({
     hideTimePicker();
   }; */
 
-  useEffect(() => {
+  /* useEffect(() => {
     const obtenerAgendamientos = () => {
       //const ref = firebase.auth().currentUser.uid;
       db.collection("agendamientos")
@@ -124,6 +125,42 @@ export default function AgendamientoForm({
     setSelectAgendamientos(agendamiento);
     console.log(agendamiento);
   }
+ */
+
+  useEffect(() => {
+    db.collection("agendamientos")
+      .where("createBy", "==", firebase.auth().currentUser.uid)
+      .onSnapshot((querySnapshot) => {
+        const users = []; //Arreglo en el cual voy a ir llenando el recorrido del forEach
+
+        querySnapshot.docs.forEach((doc) => {
+          const { fecha } = doc.data();
+          users.push({
+            id: doc.id,
+            fecha,
+          });
+        });
+        setSelectAgendamientos(users);
+
+        const index = selectAgendamiento.findIndex(
+          (obj) => obj.fecha === "09/14/21"
+        );
+        //console.log(selectAgendamiento[index]);
+        guardaSelect(selectAgendamiento[index]);
+
+        /* const index = selectAgendamiento.findIndex(
+          (obj) => obj.fecha === "09/14/21"
+        );
+        guardaSelect(selectAgendamiento[index]); */
+        //console.log(selectAgendamiento[index]);
+
+        //console.log(selectAgendamiento[index]);
+      });
+  }, []);
+
+  /*  const getIndex = () => {
+    
+  }; */
 
   function validoAgendamiento() {
     //obtenerAgendamientos();
@@ -157,20 +194,20 @@ export default function AgendamientoForm({
     } else if (!validatePhone(telefono)) {
       mostrarAlertaTelefono();
       return;
-    } /* else if (!locationServicios) {
-      toastRef.current.show(
-        "Tiene que localizar su consultorio médico en el mapa",
-        3000
-      );
-    } */ /* else if (validoAgendamiento()) {
+    } else if (select === fecha) {
+      console.log(select);
       Alert.alert("Alerta", "Ya tiene Agendado cita en ese horario", [
         {
           text: "Aceptar",
         },
       ]);
+    } /* else if (validoAgendamiento()) {
+    /* else if (!locationServicios) {
+      toastRef.current.show(
+        "Tiene que localizar su consultorio médico en el mapa",
+        3000
+      );
     } */ else {
-      //validoAgendamiento();
-      //console.log(selectAgendamiento);
       db.collection("agendamientos")
         .add({
           pacienteNombre: pacienteNombre,
@@ -443,6 +480,7 @@ export default function AgendamientoForm({
   );
 }
 
+/*
 function Map(props) {
   const { isVisibleMap, setIsVisibleMap, toastRef, setLocationServicios } =
     props;
@@ -451,6 +489,8 @@ function Map(props) {
   /*Creamos un UseEffect que es donde vamos a trabajar la petición a la API
 Hay que hacer una función asincrona para hacer peticiones await que esperen
 a que devuelva la localización para continuar. Función anónimo autoejecutable*/
+
+/*
   useEffect(() => {
     (async () => {
       const resultPermissions = await Permissions.askAsync(
@@ -480,6 +520,7 @@ a que devuelva la localización para continuar. Función anónimo autoejecutable
   }, []);
 
   /*Función que guarda la Localización en el estado de setLocationServicios */
+/*
   const confirmLocation = () => {
     setLocationServicios(location);
     toastRef.current.show("Localización guardada correctamente", 3000);
@@ -523,6 +564,7 @@ a que devuelva la localización para continuar. Función anónimo autoejecutable
     </Modal>
   );
 }
+*/
 
 const styles = StyleSheet.create({
   formulario: {

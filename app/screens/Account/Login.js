@@ -14,7 +14,7 @@ export default function Login() {
     <KeyboardAwareScrollView>
       <View style={styles.viewScreen}>
         <Image
-          source={require("../../../assets/img/sCCC_2.png")}
+          source={require("../../../assets/img/logo_sc.png")}
           resizeMode="contain"
           style={styles.logo}
         />

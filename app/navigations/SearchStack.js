@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Search from "../screens/Search";
+import VisualizarCitas from "../screens/Agendamiento/VisualizarCitas";
 
 const Stack = createStackNavigator();
 
@@ -9,7 +9,7 @@ export default function SearchStack() {
     <Stack.Navigator>
       <Stack.Screen
         name="search"
-        component={Search}
+        component={VisualizarCitas}
         options={{
           title: "Citas Médicas Agendadas",
           headerTintColor: "#00a680",

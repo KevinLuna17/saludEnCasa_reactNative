@@ -55,7 +55,9 @@ function ServicioMedico(props) {
     description,
     precioServicio,
   } = servicio.item;
+  //Este error en la aplicacion es porque la imagen no se maneja como un objeto
   const imageServicio = images[0];
+  //const imageServicio = images;
   /*    *******************    */
 
   const goServicio = () => {

@@ -21,6 +21,7 @@ import { firebaseApp } from "../../utils/firebase";
 import firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore"; //Importamos el firestore para la base de datos
+import darkColors from "react-native-elements/dist/config/colorsDark";
 const db = firebase.firestore(firebaseApp); //Le pasamos la configuración del firebaseApp
 
 export default function RegisterForm(props) {
@@ -30,6 +31,9 @@ export default function RegisterForm(props) {
   const [loading, setLoading] = useState(false);
 
   //Estados de errores en cada input
+  const [errorUsuario, setErrorUsuario] = useState(
+    "Escriba un nombre y un apellido"
+  );
   const [errorEmail, setErrorEmail] = useState(null);
   const [errorPassword, setErrorPassword] = useState(
     "La contraseña tiene que ser de 8 a 12 dígitos y solo puede contener letras, números y guión."
@@ -42,6 +46,7 @@ export default function RegisterForm(props) {
   );
 
   /* Estados de FireStore */
+  const [usuario, setUsuario] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -82,11 +87,14 @@ export default function RegisterForm(props) {
         .then(() => {
           setLoading(false);
           db.collection("usuarios").add({
+            nombre: usuario,
             correo: email,
             contrasena: str_md5(password),
             createAt: new Date(),
             tipouser: tipoUser,
-            createBy: firebase.auth().currentUser.uid,
+            createBy: usuario,
+            estado: "DC",
+            //createBy: firebase.auth().currentUser.uid,
           });
           navigation.navigate("login");
         })
@@ -127,6 +135,7 @@ export default function RegisterForm(props) {
 
   //Limpia la pantalla de los errores seteados en estados
   const clearErrors = () => {
+    setErrorUsuario(null);
     setErrorEmail(null);
     setErrorPassword(null);
     setErrorRepeatPassword(null);
@@ -151,6 +160,21 @@ export default function RegisterForm(props) {
           <Picker.Item label="Paciente" value="USER" />
         </Picker>
         <View style={styles.formContainer}>
+          <Input
+            placeholder="Nombre de Usuario"
+            containerStyle={styles.inputForm}
+            autoCapitalize="none"
+            //onChange={(e) => onChange(e, "email")}
+            onChange={(e) => setUsuario(e.nativeEvent.text)}
+            errorMessage={errorUsuario}
+            rightIcon={
+              <Icon
+                type="material-community"
+                name="account-circle"
+                iconStyle={styles.iconRightEmail}
+              />
+            }
+          />
           <Input
             placeholder="Correo Electrónico"
             keyboardType="email-address"

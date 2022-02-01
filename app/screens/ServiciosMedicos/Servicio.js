@@ -157,7 +157,7 @@ export default function Servicio(props) {
         rating={rating}
       />
       <ServicioInfo
-        location={servicio.location}
+        //location={servicio.location} VERSION INICIAL
         nombre={servicio.nombre}
         address={servicio.address}
         phone={servicio.phone}
@@ -196,9 +196,33 @@ function TitleServicio(props) {
 
 /* */
 function ServicioInfo(props) {
-  const { location, nombre, address, phone, email } = props;
+  //const { location, nombre, address, phone, email } = props;  VERSION INICIAL
+  const { nombre, address, phone, email } = props; //Correccion
 
   /* la funcion map de Lodash nos ayudara a iterar este ARRAY */
+  /* const listInfo = [
+    {
+      text: address,
+      iconName: "map-marker",
+      iconType: "material-community",
+      iconColor: "#00a680",
+      action: null,
+    },
+    {
+      text: phone,
+      iconName: "phone",
+      iconType: "material-community",
+      iconColor: "#00a680",
+      action: null,
+    },
+    {
+      text: email,
+      iconName: "at",
+      iconType: "material-community",
+      iconColor: "#00a680",
+      action: null,
+    },
+  ]; */
   const listInfo = [
     {
       text: address,
@@ -229,7 +253,7 @@ function ServicioInfo(props) {
       <Text style={styles.servicioInfoTitle}>
         Información sobre el servicio médico
       </Text>
-      <Map location={location} nombre={nombre} height={100} />
+      {/* <Map location={location} nombre={nombre} height={100} /> ASI ESTABA ANTES Y LO COMENTÉ */}
       {map(listInfo, (item, index) => (
         <ListItem key={index} style={styles.containerListItem}>
           <Icon

@@ -76,7 +76,7 @@ function Servicio(props) {
 const styles = StyleSheet.create({
   containerCard: {
     marginBottom: 30,
-    borderWidth: 0,
+    borderWidth: 1,
   },
   containerIcon: {
     position: "absolute",

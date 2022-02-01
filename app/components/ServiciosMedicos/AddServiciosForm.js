@@ -1,5 +1,13 @@
+/* 
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, ScrollView, Alert, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Alert,
+  Dimensions,
+  Text,
+} from "react-native";
 import { Icon, Avatar, Image, Input, Button } from "react-native-elements";
 import { map, size, filter } from "lodash";
 import * as Permissions from "expo-permissions";
@@ -34,7 +42,9 @@ export default function AddServiciosForm(props) {
   const [imagesSelected, setImagesSelected] = useState([]); //Se trabaja el estado de las imagenes como Array para poder contar cuantas imagenes subiremos al Storage, por medio del estado
   const [isVisibleMap, setIsVisibleMap] = useState(false); //Estado que permite trabajar con el icono de Mapa para abrir el Modal cuando se dé click en el
   const [locationServicios, setLocationServicios] = useState(null); //Estado que se encarga de guardar la ubicación del lugar una vez ubicado correctamente el Marker
+ */
 
+/* 
   const addServicios = () => {
     if (
       !nombreDr ||
@@ -69,15 +79,19 @@ export default function AddServiciosForm(props) {
         "El servicio médico que está registrando debe tener al menos una foto",
         4000
       );
-    }
-    //Si locationServicios es nulo, significa que el usuario no ha seleccionado una localización para registrar su servicio médico
-    else if (!locationServicios) {
+    } 
+    */
+
+//Si locationServicios es nulo, significa que el usuario no ha seleccionado una localización para registrar su servicio médico
+/* else if (!locationServicios) {
       toastRef.current.show(
         "Tiene que localizar su consultorio médico en el mapa",
         3000
       );
-    }
-    //En este ELSE el usuario ha completado todos los campos del formulario
+    } */
+//En este ELSE el usuario ha completado todos los campos del formulario
+
+/* 
     else {
       setisLoading(true);
       uploadImageStorage().then((response) => {
@@ -112,11 +126,14 @@ export default function AddServiciosForm(props) {
           });
       });
     }
-  };
+  }; 
+  */
 
-  /*Función que se encarga de subir las Imagenes del servicio Médico registrado 
+/*Función que se encarga de subir las Imagenes del servicio Médico registrado 
 al Storage de Firebase. Función asincrona para que devuelva una promesa y de ese
 modo poder decir termina de subir las fotos al Storage para yo luego continuar */
+
+/*
   const uploadImageStorage = async () => {
     const imageBlob = [];
 
@@ -124,11 +141,14 @@ modo poder decir termina de subir las fotos al Storage para yo luego continuar *
     await Promise.all(
       /* El map lo que hace es actualizar al Array del estado imagesSelected y luego devolverlo todo junto
       Primero tiene que terminar el map para hacer el return de imageBlob*/
+/*
+
       map(imagesSelected, async (image) => {
         const response = await fetch(image);
         const blob = await response.blob();
         const ref = firebase.storage().ref("serviciosmedicos").child(uuid()); //serviciosmedicos Es el nombre que se le dió a la carpeta en el Storage para guardar las imagenes
         /* En esta parte se sube la imagen*/
+/*
         await ref.put(blob).then(async (result) => {
           //Para obtener la Url de las imagenes que se suben al Storage
           await firebase
@@ -139,8 +159,11 @@ modo poder decir termina de subir las fotos al Storage para yo luego continuar *
               imageBlob.push(photoUrl);
             });
         });
+        
         /*     ********************     */
-      })
+
+/*
+     })
     );
 
     return imageBlob;
@@ -150,7 +173,9 @@ modo poder decir termina de subir las fotos al Storage para yo luego continuar *
     <ScrollView style={styles.scrollView}>
       <ImageServicioMedico imageServicioMedico={imagesSelected[0]} />
       <FormAdd
+        nombreDr={nombreDr}
         setNombreDr={setNombreDr}
+        serviciosName={serviciosName}
         setServiciosName={setServiciosName}
         setServiciosAddress={setServiciosAddress}
         setServiciosDescription={setServiciosDescription}
@@ -184,9 +209,12 @@ modo poder decir termina de subir las fotos al Storage para yo luego continuar *
     </ScrollView>
   );
 }
+/*
 
 /*Función que muestra la imagen principal que será mostrada
 en el formulario de Agregar Servicios Médicos*/
+
+/*
 function ImageServicioMedico(props) {
   const { imageServicioMedico } = props;
 
@@ -208,6 +236,7 @@ function FormAdd(props) {
   const {
     nombreDr,
     setNombreDr,
+    serviciosName,
     setServiciosName,
     country,
     setCountry,
@@ -225,29 +254,73 @@ function FormAdd(props) {
 
   return (
     <View style={styles.viewForm}>
-      {/* <Picker
+      {/* <Input
+        placeholder="Ingrese sus Nombres Completos"
+        containerStyle={styles.input}
+        onChange={(e) => setNombreDr(e.nativeEvent.text)}
+      /> */ //}
+
+/*
+
+      <Text style={styles.label}>Seleccione el profesional de salud:</Text>
+
+      <Picker
         selectedValue={nombreDr}
         itemStyle={{ height: 120, backgroundColor: "#FFF" }}
         onValueChange={(itemValue, itemIndex) => setNombreDr(itemValue)}
       >
         <Picker.Item label="-- Seleccione --" value="" />
-        <Picker.Item label="Dra. Mercedes Cardenas" value="MC" />
-        <Picker.Item label="Lcdo. Ubaldo Sosa" value="US" />
-        <Picker.Item label="Lcdo. Reemberto Hernández" value="RH" />
-        <Picker.Item label="Lcda. Gexsys Frómeta" value="GF" />
-        <Picker.Item label="Aux. Isabel Terranova" value="IT" />
-        <Picker.Item label="Aux. Cecibel González" value="CG" />
-      </Picker> */}
-      <Input
-        placeholder="Ingrese sus Nombres Completos"
-        containerStyle={styles.input}
-        onChange={(e) => setNombreDr(e.nativeEvent.text)}
-      />
-      <Input
+        <Picker.Item
+          label="Dra. Mercedes Cardenas"
+          value="Dra. Mercedes Cardenas"
+        />
+        <Picker.Item label="Lcdo. Ubaldo Sosa" value="Lcdo. Ubaldo Sosa" />
+        <Picker.Item
+          label="Lcdo. Reemberto Hernández"
+          value="Lcdo. Reemberto Hernández"
+        />
+        <Picker.Item
+          label="Lcda. Gexsys Frómeta"
+          value="Lcda. Gexsys Frómeta"
+        />
+        <Picker.Item
+          label="Aux. Isabel Terranova"
+          value="Aux. Isabel Terranova"
+        />
+        <Picker.Item
+          label="Aux. Cecibel González"
+          value="Aux. Cecibel González"
+        />
+      </Picker>
+
+      {/* <Input
         placeholder="Ingrese Nombre del Servicio Médico"
         containerStyle={styles.input}
         onChange={(e) => setServiciosName(e.nativeEvent.text)}
-      />
+      /> */ //}
+/*
+
+      {/* <View> */ //}
+/*
+      <Text style={styles.label}>
+        Seleccione el tipo de servicio médico que desea:
+      </Text>
+      {/* </View> */ //}
+/*
+      <Picker
+        selectedValue={serviciosName}
+        itemStyle={{ height: 120, backgroundColor: "#FFF" }}
+        onValueChange={(itemValue, itemIndex) => setServiciosName(itemValue)}
+      >
+        <Picker.Item label="-- Seleccione --" value="" />
+        <Picker.Item label="Ozonoterapia" value="Ozonoterapia" />
+        <Picker.Item label="Suero Terapia" value="Suero Terapia" />
+        <Picker.Item label="Terapia Física" value="Terapia Física" />
+        <Picker.Item label="Inyecciones" value="Inyecciones" />
+        <Picker.Item label="Cuidado a Pacientes" value="Cuidado a Pacientes" />
+        <Picker.Item label="Geriatría" value="Geriatría" />
+      </Picker>
+
       <Input
         placeholder="Dirección del Consultorio"
         containerStyle={styles.input}
@@ -312,8 +385,10 @@ function FormAdd(props) {
     </View>
   );
 }
+/*
 
 /*Modal que se encargará de gestionar todo el Maps */
+/*
 function Map(props) {
   const { isVisibleMap, setIsVisibleMap, toastRef, setLocationServicios } =
     props;
@@ -322,6 +397,7 @@ function Map(props) {
   /*Creamos un UseEffect que es donde vamos a trabajar la petición a la API
 Hay que hacer una función asincrona para hacer peticiones await que esperen
 a que devuelva la localización para continuar. Función anónimo autoejecutable*/
+/*
   useEffect(() => {
     (async () => {
       const resultPermissions = await Permissions.askAsync(
@@ -335,12 +411,13 @@ a que devuelva la localización para continuar. Función anónimo autoejecutable
           3000
         );
       } else {
-        //const loc = await Location.getCurrentPositionAsync({}); Actualmente da error
+        const loc = await Location.getCurrentPositionAsync({}); //Actualmente da error
         //Forma correcta actualmente de manejar la dirección GPS
-        const loc = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.High,
-        });
-        /*Este objeto se lo utilizará para el Mapa tiene que estar bien definido */
+        /* const loc = await Location.getCurrentPositionAsync({
+          //accuracy: Location.Accuracy.High,
+        }); */
+/*Este objeto se lo utilizará para el Mapa tiene que estar bien definido */
+/*
         setLocation({
           latitude: loc.coords.latitude,
           longitude: loc.coords.longitude,
@@ -352,6 +429,7 @@ a que devuelva la localización para continuar. Función anónimo autoejecutable
   }, []);
 
   /*Función que guarda la Localización en el estado de setLocationServicios */
+/*
   const confirmLocation = () => {
     setLocationServicios(location);
     toastRef.current.show("Localización guardada correctamente", 3000);
@@ -484,6 +562,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   input: {
+    marginTop: 10,
     marginBottom: 10,
   },
   textArea: {
@@ -551,4 +630,9 @@ const styles = StyleSheet.create({
   inputCosto: {
     width: "80%",
   },
-});
+  label: {
+    //fontWeight: "bold",
+    fontSize: 18,
+    //marginTop: 5,
+  },
+/*});*/

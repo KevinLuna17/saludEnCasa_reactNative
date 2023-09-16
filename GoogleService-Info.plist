@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>831098518614-72js7bp7dk136vdi9d2mnv16dt2utjp8.apps.googleusercontent.com</string>
+	<string>CLIENT_ID</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.831098518614-72js7bp7dk136vdi9d2mnv16dt2utjp8</string>
+	<string>REVERSED_CLIENT_ID</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAkQqWS-PV-CL4KOEZxpIv3X4NoQ29Ag28</string>
+	<string>API_KEY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>831098518614</string>
+	<string>GCM_SENDER_ID</string>
 	<key>PLIST_VERSION</key>
-	<string>1</string>
+	<string>PLIST_VERSION</string>
 	<key>BUNDLE_ID</key>
-	<string>com.tesis.saludencasa</string>
+	<string>BUNDLE_ID</string>
 	<key>PROJECT_ID</key>
-	<string>saludencasa-fb2c7</string>
+	<string>PROJECT_ID</string>
 	<key>STORAGE_BUCKET</key>
-	<string>saludencasa-fb2c7.appspot.com</string>
+	<string>STORAGE_BUCKET</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:831098518614:ios:3147050efc97534f1e0ff7</string>
+	<string>GOOGLE_APP_ID</string>
 </dict>
 </plist>
